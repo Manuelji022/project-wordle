@@ -4,7 +4,7 @@ function GuessInput() {
   const [guessWord, setNewGuessedWord] = React.useState("");
 
   function printGuessWord() {
-    console.log(guessWord.toUpperCase());
+    console.log(guessWord);
     setNewGuessedWord("");
   }
 
@@ -16,13 +16,16 @@ function GuessInput() {
         printGuessWord();
       }}
     >
-      <label for="guess-input">Enter guess:</label>
+      <label htmlFor="guess-input">Enter guess:</label>
       <input
         type="text"
         id="guess-input"
         value={guessWord}
         pattern="^[a-zA-Z]{1,5}$"
-        onChange={(event) => setNewGuessedWord(event.target.value)}
+        onChange={(event) => {
+          const nextGuess = event.target.value.toUpperCase();
+          setNewGuessedWord(nextGuess);
+        }}
       ></input>
     </form>
   );
