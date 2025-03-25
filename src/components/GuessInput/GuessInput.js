@@ -1,10 +1,16 @@
 import React from "react";
 
-function GuessInput() {
+function GuessInput({ guessedWords, setNewGuessedWords }) {
   const [guessWord, setNewGuessedWord] = React.useState("");
 
   function printGuessWord() {
     console.log(guessWord);
+    setNewGuessedWord("");
+  }
+
+  function addGuessedWord(newWord) {
+    const newGuessedWords = [...guessedWords, newWord];
+    setNewGuessedWords(newGuessedWords);
     setNewGuessedWord("");
   }
 
@@ -13,6 +19,7 @@ function GuessInput() {
       className="guess-input-wrapper"
       onSubmit={(event) => {
         event.preventDefault();
+        addGuessedWord(guessWord);
         printGuessWord();
       }}
     >
