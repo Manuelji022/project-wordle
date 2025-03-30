@@ -1,14 +1,15 @@
 import React from "react";
 
-function GuessTracker({ guessedWord }) {
+import Guess from "../Guess/Guess";
+
+import { range } from "../../utils";
+import { NUM_OF_GUESSES_ALLOWED } from "../../constants.js";
+
+function GuessTracker({ guessedWords }) {
   return (
     <div className="guess-results">
-      {guessedWord.map((word, index) => {
-        return (
-          <p className="guess" key={index}>
-            {word}
-          </p>
-        );
+      {range(NUM_OF_GUESSES_ALLOWED).map((num) => {
+        return <Guess value={guessedWords[num]} key={num} />;
       })}
     </div>
   );
