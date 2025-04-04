@@ -15,7 +15,7 @@ function Game() {
   const [guessedWords, setNewGuessedWords] = React.useState([]);
   return (
     <>
-      <GuessTracker guessedWords={guessedWords} />
+      <GuessTracker guessedWords={guessedWords} answer={answer} />
       <GuessInput
         guessedWords={guessedWords}
         setNewGuessedWords={setNewGuessedWords}
